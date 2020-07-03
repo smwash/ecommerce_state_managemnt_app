@@ -42,6 +42,48 @@ class CartItemCard extends StatelessWidget {
         child: Icon(Icons.delete, color: Colors.white),
       ),
       direction: DismissDirection.endToStart,
+      confirmDismiss: (direction) {
+        return showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Delete Item?'),
+            content: Text('Are You Sure you want to delete this item?'),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13.0),
+            ),
+            actions: [
+              GestureDetector(
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: kPrimaryColor, width: 1.5),
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                    child: Text('No'),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).pop(false);
+                  }),
+              SizedBox(
+                width: 7.5,
+              ),
+              GestureDetector(
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      gradient: kDefaultGradient,
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    child: Text('Sure'),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).pop(true);
+                  }),
+            ],
+          ),
+        );
+      },
       onDismissed: (direction) {
         Provider.of<Cart>(context, listen: false).removeItem(productId);
       },

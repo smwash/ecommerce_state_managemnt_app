@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app_concept/constants.dart';
 import 'package:shop_app_concept/screens/orders_screen.dart';
 import 'package:shop_app_concept/screens/products_overview_screen.dart';
+import 'package:shop_app_concept/screens/user_products_screen.dart';
 
 class DrawerPage extends StatelessWidget {
   @override
@@ -54,6 +55,14 @@ class DrawerPage extends StatelessWidget {
             title: Text('My Orders', style: kTextStyle),
             onTap: () {
               Navigator.pushReplacementNamed(context, OrdersScreen.idPage);
+            },
+          ),
+          Divider(color: kPrimaryColor, thickness: 1),
+          ListTile(
+            leading: Icon(Icons.edit),
+            title: Text('Manage Products', style: kTextStyle),
+            onTap: () {
+              Navigator.pushReplacementNamed(context, UserProductScreen.idPage);
             },
           ),
         ],

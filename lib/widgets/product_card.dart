@@ -123,6 +123,26 @@ class ProductCard extends StatelessWidget {
                               product.title,
                               // product.imageUrl,
                             );
+                            Scaffold.of(context).hideCurrentSnackBar();
+                            Scaffold.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Item Added Successfully',
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                duration: Duration(seconds: 2),
+                                backgroundColor: kSecondaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                                action: SnackBarAction(
+                                  label: 'UNDO',
+                                  onPressed: () {
+                                    cart.removeSingleItem(product.id);
+                                  },
+                                ),
+                              ),
+                            );
                           },
                         ),
                       ],
