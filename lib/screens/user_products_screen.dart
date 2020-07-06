@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app_concept/providers/product_provider.dart';
+import 'package:shop_app_concept/screens/edit_product_screen.dart';
 import 'package:shop_app_concept/widgets/drawertile.dart';
 import 'package:shop_app_concept/widgets/user_product_item.dart';
 
@@ -44,7 +45,9 @@ class UserProductScreen extends StatelessWidget {
               Icons.add,
               color: kPrimaryColor,
             ),
-            onPressed: null,
+            onPressed: () {
+              Navigator.pushNamed(context, EditProductScreen.idPage);
+            },
           ),
         ],
       ),
@@ -55,6 +58,7 @@ class UserProductScreen extends StatelessWidget {
           itemCount: productData.items.length,
           itemBuilder: (context, index) => UserProductItem(
               title: productData.items[index].title,
+              id: productData.items[index].id,
               imageUrl: productData.items[index].imageUrl),
         ),
       ),
