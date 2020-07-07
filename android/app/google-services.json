@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "514037302433",
+    "firebase_url": "https://ishop-a0a8d.firebaseio.com",
+    "project_id": "ishop-a0a8d",
+    "storage_bucket": "ishop-a0a8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514037302433:android:b4f71a1dbbd74cfd0f1ce0",
+        "android_client_info": {
+          "package_name": "com.samz.shop_app_concept"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514037302433-vv5b244ga24j8lvour9ckptub34mrice.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFClhu1RmvP9h7wJsBjeSsF7aCd_bdmv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514037302433-vv5b244ga24j8lvour9ckptub34mrice.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'products_class.dart';
+import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier {
   List<Product> _items = [
@@ -49,16 +51,31 @@ class Products with ChangeNotifier {
     return _items.firstWhere((product) => product.id == id);
   }
 
-  void addProduct(Product product) {
-    final newProduct = Product(
-      description: product.description,
-      imageUrl: product.imageUrl,
-      title: product.title,
-      price: product.price,
-      id: DateTime.now().toString(),
-    );
-    _items.add(newProduct);
-    notifyListeners();
+  Future<void> addProduct(Product product) {
+    const url = 'https://ishop-a0a8d.firebaseio.com/products.json';
+    return http
+        .post(url,
+            body: json.encode(
+              {
+                'title': product.title,
+                'price': product.price,
+                'imageUrl': product.imageUrl,
+                'description': product.description,
+                'isFavorite': product.isFavorite,
+              },
+            ))
+        .then((response) {
+      final newProduct = Product(
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        id: json.decode(response.body)['name'],
+      );
+      _items.add(newProduct);
+      // _items.insert(0, newProduct); // at the start of the list
+      notifyListeners();
+    });
   }
 
 //mtd to update prodcu upon editing.
